@@ -1,4 +1,8 @@
+package game;
 import java.util.Scanner;
+
+import utils.Sleep;
+import utils.Sound;
 
 public class Game {
     private int turn;
@@ -27,6 +31,8 @@ public class Game {
             execBattle();
 
             turn++;
+            
+            Sleep.sleep(1500);
         }
         dispGameEnd();
     }
@@ -102,6 +108,9 @@ public class Game {
 
         //爆弾の位置を取得
         Bomb bomb = inputBombPos();
+        //爆発音を鳴らす
+        Sound.sound("explosion.wav");
+        Sleep.sleep(1000);
 
         for( int i=0; i < map.getShipNum(); i++ ){
             Ship ship = map.getShipById(i);
@@ -128,9 +137,11 @@ public class Game {
                 break;
             case Ship.ACT_HIT1 :
                 System.out.println(ship.getName()+":命中したけどまだ生きている");
+                Sound.sound("damage.wav");
                 break;
             case Ship.ACT_HIT2 :
                 System.out.println(ship.getName()+":撃沈！");
+                Sound.sound("die.wav");
                 break;
             case Ship.ACT_NAMITAKA :
                 System.out.println(ship.getName()+":波高し");

@@ -1,3 +1,4 @@
+package game;
 public class Bomb {
     private Position pos;
     private int pow;

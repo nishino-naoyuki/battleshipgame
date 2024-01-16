@@ -1,3 +1,4 @@
+package game;
 public class Ship {
     private String name;
     private Position pos;
